@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="m-0 p-0 w-100 h-100">
+    <main class="w-100 h-100 d-flex mt-5">
+        <div class="side col-3"></div>
+        <div class="mainContainer col-6">
+            <h1 class="text-center mb-5">Breakfast meal generator</h1>
+            <div class="form-group mb-3">
+                <label for="fruitInput">What fruits do you have?</label>
+                <input type="text"
+                       class="form-control form-control-sm" name="" id="fruitInput" aria-describedby="helpId" placeholder="Fruits">
+            </div>
+
+            <div class="form-check form-check-inline mb-3 d-flex flex-column justify-content-start" id="meatBoolean">
+                <label class="form-check-label d-block">Do you want any meat with your breakfast?</label>
+                <div class="d-block mt-3">
+                    <input class="form-check-input form-radio" type="radio" name="meatSelect" id="yesSelector" value="Yes"> Yes
+                    <input class="form-check-input form-radio" type="radio" name="meatSelect" id="noSelector" value="No"> No
+                </div>
+            </div>
+
+            <div class="form-group mb-3" id="meatSelectorContainer">
+                <label for="meatSelection">What kind of meat do you prefer?</label>
+                <select multiple class="form-control" name="meatSelection" id="meatSelection">
+                    <optgroup label="Bacon">
+                        <option class="meatOption" value="smoked pork bacon">Smoked pork bacon</option>
+                        <option class="meatOption" value="turkey bacon">Turkey bacon</option>
+                    </optgroup>
+                    <optgroup label="Beef">
+                        <option class="meatOption" value="pastrami">Pastrami</option>
+                        <option class="meatOption" value="corned beef">Corned beef</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="ingredientSelection">What ingredients do you have around?</label>
+                <input type="text"
+                       class="form-control form-control-sm" name="" id="ingredientSelection" aria-describedby="helpId" placeholder="Your ingredients">
+            </div>
+                <div class="d-flex mb-3">
+                    <div class="col-lg-4 col-sm col-0"></div>
+                    <div class="col-lg-4 col-sm-10 col-xs-12">
+                        <button type="submit" class="btn btn-success w-100">Give me my breakfast</button>
+                    </div>
+                    <div class="col-lg-4 col-sm col-0"></div>
+                </div>
+
+            <div class="col-lg" id="resultSection">
+                <h2 class="text-center">Your result</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Cum, eos ex harum illo magni maiores mollitia pariatur perspiciatis,
+                    placeat quod quos reiciendis vel vitae? Adipisci animi fugit quasi quisquam totam!</p>
+            </div>
+        </div>
+        <div class="side col-3"></div>
+    </main>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="objectfun.js"></script>
+</body>
+</html>
