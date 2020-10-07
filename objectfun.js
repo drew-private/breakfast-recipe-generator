@@ -33,30 +33,59 @@ const mainDish = {
         ],
 }
 
-const fruitVal = $('#fruitInput').val()
 const meatSelector = $('.form-radio')
 const meatSelectorContainer = $('#meatSelectorContainer')
-// const meatOptions = $('#meatSelection')
+const meatOptions = $('#meatSelection')
 
-// meatSelector.click(function hideMeatSelector () {
-//     if ($('.form-radio:checked').val() === 'Yes') {
-//         meatSelectorContainer.removeClass('d-none')
-//     } else {
-//         meatSelectorContainer.addClass('d-none')
-//     }
-// })
-
-const ingredientVal = $('#ingredientSelection').val()
+meatSelector.click(function hideMeatSelector () {
+    if ($('.form-radio:checked').val() === 'Yes') {
+        meatSelectorContainer.removeClass('d-none')
+    } else {
+        meatSelectorContainer.addClass('d-none')
+    }
+})
 
 $('.btn').click( () => {
+    const ingredientVal = $('#ingredientSelection').val()
+    const fruitVal = $('#fruitInput').val()
+
     $('#meatSelection optgroup option:selected').each(() => {
         console.warn($('option:selected').val())
     })
 
-    console.log(fruitVal, ingredientVal,)
+    let parsedIngredArr = [];
+
+    function parseIngred () {
+        if (ingredientVal) {
+            let splitVal = ingredientVal.split(/[ ,]+/)
+
+            for (let i in splitVal) {
+                if (splitVal[i].match(/[a-z]+/gi)) {
+                    parsedIngredArr.push(splitVal[i])
+                } else {
+                    console.warn('Mata')
+                }
+            }
+        } else {
+            alert('Please add some ingredients!')
+        }
+    }
+    parseIngred();
+
+    function corelateIngred () {
+        for( let i in Object.values(mainDish)) {
+            for (let j in i) {
+                console.log()
+            }
+            // for(let j of Object.getOwnPropertyDescriptor(mainDish, i).val()) {
+            //     console.log(j);
+            // }
+        }
+    }
+    corelateIngred();
+
+    // console.warn(parsedIngredArr, Object.getOwnPropertyDescriptor(mainDish, 'Grapefruit'))
 })
-
-
 
 // const spoontactularUrl = new URL("https://api.spoonacular.com/recipes/complexSearch")
 //
