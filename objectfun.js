@@ -1,5 +1,5 @@
 const breakfast = {
-    fruit: ['orange', 'grapefruit', 'grapes', 'pineapple', 'apples', 'pears'],
+    fruit: ['oranges', 'grapefruit', 'grapes', 'pineapple', 'apples', 'pears'],
     drink: ['milk', 'fresh juice', 'bottle juice', 'soda', 'water'],
     meat: {
         bacon: ['smoked pork bacon', 'turkey'],
@@ -10,25 +10,25 @@ const breakfast = {
 }
 
 const mainDish = {
-        pancakes: [
+        Pancakes: [
             'eggs', 'milk', 'flour', 'oil'
-        ], omelette: [
+        ], Omelette: [
             'eggs', 'salt', 'pepper', 'oil'
-        ], oatmeal: [
-            'oats', 'milk', breakfast.fruit,
-        ], 'fruit salad': breakfast.fruit,
+        ], Oatmeal: breakfast.fruit + [
+            'oats', 'milk'
+        ], 'Fruit salad': breakfast.fruit,
         'avocado toast': [
             'avocado', 'bread', 'toast', 'eggs'
-        ], 'poached eggs': [
-            'eggs', 'oil', 'salt', 'pepper'
-        ], 'fried eggs': [
+        ], 'Poached eggs': [
+            'eggs', 'salt', 'pepper'
+        ], 'Fried eggs': [
             'eggs', 'oil', 'salt', 'pepper'
         ],
         'Nutella spread': [
             'Nutella', 'bread'
         ], Grapefruit: [
             'grapefruit'
-        ], 'milk & cereals': [
+        ], 'Milk & cereals': [
             'milk', 'cereals'
         ],
 }
@@ -72,19 +72,49 @@ $('.btn').click( () => {
     }
     parseIngred();
 
+    let multipleDishesResult = [];
+
     function corelateIngred () {
-        for( let i in Object.values(mainDish)) {
-            for (let j in i) {
-                console.log()
+        const mainDishVal = Object.values(mainDish);
+
+
+        for (let i in mainDishVal) {
+            let brokenMainDish = mainDishVal[i];
+
+             let correlationFunc = parsedIngredArr.every(function(element) {
+                if(brokenMainDish.indexOf(element)>-1){
+                    return element = brokenMainDish[brokenMainDish.indexOf(element)]
+                }
+            });
+
+            if (correlationFunc === true) {
+                let dishResult = Object.keys(mainDish).find(key => mainDish[key] === brokenMainDish)
+                multipleDishesResult.push(dishResult);
+                let formattedStrRes = multipleDishesResult.sort().join(', ');
+                $('#resultText').text(formattedStrRes);
             }
-            // for(let j of Object.getOwnPropertyDescriptor(mainDish, i).val()) {
-            //     console.log(j);
-            // }
         }
     }
     corelateIngred();
 
-    // console.warn(parsedIngredArr, Object.getOwnPropertyDescriptor(mainDish, 'Grapefruit'))
+    function missingIngred () {
+            if (multipleDishesResult) {
+                for (let i in multipleDishesResult) {
+                    // console.log(multipleDishesResult[i]);
+                    if (mainDish.hasOwnProperty(multipleDishesResult[i])) {
+                        let propList = [];
+                        propList.push(multipleDishesResult[i]);
+
+                        // for (let j in ) {
+                        //     console.log()
+                        // }
+                        console.log(multipleDishesResult[i] + ' Ma-ta e o curva' + propList);
+                    }
+                }
+            }
+    }
+
+    missingIngred()
 })
 
 // const spoontactularUrl = new URL("https://api.spoonacular.com/recipes/complexSearch")

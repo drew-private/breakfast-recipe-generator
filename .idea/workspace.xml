@@ -23,6 +23,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1hoVp4J8sZxq1iEuEtvmAuYW8cj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -31,9 +42,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
-    <property name="javascript.nodejs.core.library.typings.version" value="12.12.62" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.19.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.67" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -56,6 +77,14 @@
       <workItem from="1601716222358" duration="3942000" />
       <workItem from="1601804302034" duration="187000" />
       <workItem from="1601804541363" duration="7270000" />
+      <workItem from="1602199830215" duration="119000" />
+      <workItem from="1602200003825" duration="631000" />
+      <workItem from="1602200818817" duration="1075000" />
+      <workItem from="1602233266820" duration="155000" />
+      <workItem from="1602233954005" duration="16533000" />
+      <workItem from="1602443596718" duration="430000" />
+      <workItem from="1602444066607" duration="13779000" />
+      <workItem from="1602701841531" duration="1388000" />
     </task>
     <servers />
   </component>
@@ -63,17 +92,29 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="482" y="261" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1600688330250">
+    <state x="568" y="310" key="#Usage_Scope" timestamp="1602233408692">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="482" y="261" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.1500.960@0.0.1500.960" timestamp="1600688330250" />
+    <state x="568" y="310" key="#Usage_Scope/0.0.1500.960@0.0.1500.960" timestamp="1602233408692" />
+    <state x="482" y="261" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1602451605869">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="482" y="261" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.1500.960@0.0.1500.960" timestamp="1602451605869" />
     <state x="481" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600681618281">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="481" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1500.960@0.0.1500.960" timestamp="1600681618281" />
-    <state x="260" y="125" key="SettingsEditor" timestamp="1600764044961">
+    <state x="532" y="222" key="FileChooserDialogImpl" timestamp="1602199882982">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="260" y="125" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1600764044961" />
+    <state x="532" y="222" key="FileChooserDialogImpl/0.0.1500.960@0.0.1500.960" timestamp="1602199882982" />
+    <state x="260" y="125" key="SettingsEditor" timestamp="1602451610413">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="260" y="125" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1602451610413" />
+    <state x="476" y="288" key="jetbrains.nodejs.interpreters-dialog" timestamp="1602233402916">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="476" y="288" key="jetbrains.nodejs.interpreters-dialog/0.0.1500.960@0.0.1500.960" timestamp="1602233402916" />
   </component>
 </project>
