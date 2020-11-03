@@ -14,7 +14,7 @@ const mainDish = {
             'eggs', 'milk', 'flour', 'oil'
         ], Omelette: [
             'eggs', 'salt', 'pepper', 'oil'
-        ], Oatmeal: breakfast.fruit + [
+        ], Oatmeal: [breakfast.fruit,
             'oats', 'milk'
         ], 'Fruit salad': breakfast.fruit,
         'avocado toast': [
@@ -72,49 +72,59 @@ $('.btn').click( () => {
     }
     parseIngred();
 
-    let multipleDishesResult = [];
+    let notFoundIngred = []
 
     function corelateIngred () {
         const mainDishVal = Object.values(mainDish);
+        let multipleDishesResult = [];
 
+        let foundIngred = []
 
         for (let i in mainDishVal) {
             let brokenMainDish = mainDishVal[i];
+            let dishResult = Object.keys(mainDish).find(key => mainDish[key] === brokenMainDish);
+            multipleDishesResult.push(dishResult);
+        }
 
-             let correlationFunc = parsedIngredArr.every(function(element) {
-                if(brokenMainDish.indexOf(element)>-1){
-                    return element = brokenMainDish[brokenMainDish.indexOf(element)]
-                }
-            });
+        for (let i in parsedIngredArr) {
+            let noIngredFound = () => {
+               let arr = [];
+               let values =  mainDish[multipleDishesResult[i]].valueOf();
+               arr.push(values);
 
-            if (correlationFunc === true) {
-                let dishResult = Object.keys(mainDish).find(key => mainDish[key] === brokenMainDish)
-                multipleDishesResult.push(dishResult);
+               for (let j in arr) {
+                   if(arr[j] === parsedIngredArr[j]) {
+                       foundIngred.push(arr[j])
+                   } else {
+                       notFoundIngred.push(arr[j]);
+                   }
+               }
+            };
+            noIngredFound();
+        }
+
+        function filteringFoundIngred () {
+
+            const filteredIngreds = notFoundIngred.flat(2).filter(
+                function (el) {
+                    return this.indexOf(el) < 0
+                }, [...parsedIngredArr]
+            )
+
+            if (filteredIngreds.length > 0) {
+                $('#resultText').text('You will need some of these awesome ingredients to ' +
+                    'make an awesome nutrition packed breakfast' + '' + filteredIngreds)
+            } else {
                 let formattedStrRes = multipleDishesResult.sort().join(', ');
                 $('#resultText').text(formattedStrRes);
             }
-        }
+
+        }; filteringFoundIngred()
+
     }
+
     corelateIngred();
-
-    function missingIngred () {
-            if (multipleDishesResult) {
-                for (let i in multipleDishesResult) {
-                    // console.log(multipleDishesResult[i]);
-                    if (mainDish.hasOwnProperty(multipleDishesResult[i])) {
-                        let propList = [];
-                        propList.push(multipleDishesResult[i]);
-
-                        // for (let j in ) {
-                        //     console.log()
-                        // }
-                        console.log(multipleDishesResult[i] + ' Ma-ta e o curva' + propList);
-                    }
-                }
-            }
-    }
-
-    missingIngred()
+    // TODO Check for the missing ingredients and display potential dishes and the missing ingredients
 })
 
 // const spoontactularUrl = new URL("https://api.spoonacular.com/recipes/complexSearch")
