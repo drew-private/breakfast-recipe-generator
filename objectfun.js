@@ -6,7 +6,7 @@ const breakfast = {
         beef: ['corned beef', 'pastrami']
     },
     ingredientsMainDish: ['eggs', 'milk', 'flour', 'oats', 'salt', 'pepper', 'avocado', 'tomatoes', 'peppers',
-        'Nutella', 'bread', 'cereals','oil'],
+        'nutella', 'bread', 'cereals','oil'],
 }
 
 const mainDish = {
@@ -14,7 +14,7 @@ const mainDish = {
             'eggs', 'milk', 'flour', 'oil'
         ], Omelette: [
             'eggs', 'salt', 'pepper', 'oil'
-        ], Oatmeal: [breakfast.fruit,
+        ], Oatmeal: [
             'oats', 'milk'
         ], 'Fruit salad': breakfast.fruit,
         'avocado toast': [
@@ -25,7 +25,7 @@ const mainDish = {
             'eggs', 'oil', 'salt', 'pepper'
         ],
         'Nutella spread': [
-            'Nutella', 'bread'
+            'nutella', 'bread'
         ], Grapefruit: [
             'grapefruit'
         ], 'Milk & cereals': [
@@ -61,7 +61,7 @@ $('.btn').click( () => {
 
             for (let i in splitVal) {
                 if (splitVal[i].match(/[a-z]+/gi)) {
-                    parsedIngredArr.push(splitVal[i])
+                    parsedIngredArr.push(splitVal[i].toLowerCase())
                 } else {
                     console.warn('Mata')
                 }
@@ -103,40 +103,57 @@ $('.btn').click( () => {
             noIngredFound();
         }
 
+        let filteredMissingIngredients = [];
+
         function filteringFoundIngred () {
 
-            const filteredIngreds = notFoundIngred.flat(2).filter(
+            notFoundIngred.flat(2).filter(
                 function (el) {
-                    return this.indexOf(el) < 0
+                    filteredMissingIngredients.push(this.indexOf(el) < 0)
                 }, [...parsedIngredArr]
             )
 
-            if (filteredIngreds.length > 0) {
-                $('#resultText').text('You will need some of these awesome ingredients to ' +
-                    'make an awesome nutrition packed breakfast' + '' + filteredIngreds)
-            } else {
-                let formattedStrRes = multipleDishesResult.sort().join(', ');
-                $('#resultText').text(formattedStrRes);
+        }; filteringFoundIngred()
+
+        function displayResults () {
+            let resultingDishes = []
+            let missingIngredients = []
+
+            for(let i in mainDish) {
+                let difference = $(mainDish[i]).not(parsedIngredArr).get()
+
+                if (difference.length === 0) {
+                    let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
+                        if (dishResult === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
+                            resultingDishes.push('Oatmeal with fruits')
+                        } else {
+                            resultingDishes.push(dishResult)
+                        }
+
+                    $('#resultText').text(resultingDishes.sort().join(', '))
+                    // console.warn(difference, resultingDishes)
+                } else {
+                    if(mainDish[i].toString() === parsedIngredArr + ',' + difference) {
+                        if (difference[i] !== missingIngredients[i] || missingIngredients.length === 0) {
+                            missingIngredients.push(difference)
+                            $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
+                        }
+                    }
+                }
+
             }
 
-        }; filteringFoundIngred()
+        }; displayResults()
 
     }
 
     corelateIngred();
-    // TODO Check for the missing ingredients and display potential dishes and the missing ingredients
+
 })
 
 // const spoontactularUrl = new URL("https://api.spoonacular.com/recipes/complexSearch")
 //
 // const apiKey = '?apiKey=4c7ddae85e3146e597ee0dacaa8b1bce';
-//
-// let getKey = '';
-//
-// for (let i of Object.keys(mainDish)) {
-//     if( i === 'fried eggs' )
-//         getKey = i;
-// }
 //
 // const query = '&query=' + 'avocado+toast'
 //
