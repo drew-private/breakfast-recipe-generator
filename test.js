@@ -73,30 +73,65 @@ $('.btn').click( () => {
         function displayResults () {
             let resultingDishes = []
             let missingIngredients = []
+            let obj = {}
 
             for(let i in mainDish) {
-                let difference = $(mainDish[i]).not(parsedIngredArr).get()
-
-                if (difference.length === 0) {
-                    let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
-                    if (dishResult === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
-                        resultingDishes.push('Oatmeal with fruits')
-                    } else {
-                        resultingDishes.push(dishResult)
-                    }
-
-                    $('#resultText').text(resultingDishes.sort().join(', '))
-                    // console.warn(difference, resultingDishes)
-                } else {
-                    if(mainDish[i].toString() === parsedIngredArr + ',' + difference) {
-                        if (difference[i] !== missingIngredients[i] || missingIngredients.length === 0) {
-                            missingIngredients.push(difference)
-                            $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
-                        }
-                    }
-                }
-
+                mainDish[i].forEach((el, index) => {
+                    obj[el] = index;
+                })
             }
+
+            let check = parsedIngredArr.every((el) => {
+                return obj[el] !== undefined; //because 0 is falsy
+            });
+
+            console.log(check)
+
+            // for(let i in mainDish) {
+            //     let difference = $(mainDish[i]).not(parsedIngredArr).get()
+            //     let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
+            //
+            //     for (let j = 0; j < mainDish[i].length; j++) {
+            //         if(mainDish[i][j] === parsedIngredArr[j]) {
+            //             console.log(mainDish[i][j])
+            //         }
+            //     }
+
+
+
+
+                // if(mainDish[i].includes(...parsedIngredArr)) {
+                //     // let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
+                //     if (i === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
+                //         resultingDishes.push('Oatmeal with fruits')
+                //     } else {
+                //         resultingDishes.push(i)
+                //     }
+                //     $('#resultText').text(resultingDishes.sort().join(', '))
+                // for (let j in parsedIngredArr) {
+
+                    // if (mainDish[i].find(el => el === parsedIngredArr[j])) {
+                    //     if(mainDish[i].includes(...parsedIngredArr)) {
+                    //
+                    //         // let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
+                    //         if (i === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
+                    //             resultingDishes.push('Oatmeal with fruits')
+                    //         } else {
+                    //             resultingDishes.push(i)
+                    //         }
+                    //         console.log(resultingDishes);
+                    //         $('#resultText').text(resultingDishes.sort().join(', '))
+                        // }
+                            // else if(mainDish[i].includes(...parsedIngredArr) && parsedIngredArr.length > mainDish[i].length){
+                        //     console.log(difference)
+                        //     missingIngredients.push(difference)
+                        //     $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
+                        // }
+                    // }
+                // }
+        // }
+
+
 
         }; displayResults()
 
