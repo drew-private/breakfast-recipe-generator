@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "dependencies": {
     "jsdom": "^16.4.0",
+    "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
     "whatwg-fetch": "^3.4.1"
   },
   "devDependencies": {
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.20"
   }
 }

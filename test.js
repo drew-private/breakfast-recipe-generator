@@ -26,8 +26,6 @@ const mainDish = {
     ],
     'Nutella spread': [
         'nutella', 'bread'
-    ], Grapefruit: [
-        'grapefruit'
     ], 'Milk & cereals': [
         'milk', 'cereals'
     ],
@@ -73,19 +71,44 @@ $('.btn').click( () => {
         function displayResults () {
             let resultingDishes = []
             let missingIngredients = []
-            let obj = {}
+            let differenceArrLen = [];
 
             for(let i in mainDish) {
-                mainDish[i].forEach((el, index) => {
-                    obj[el] = index;
-                })
+                let difference = $(mainDish[i]).not(parsedIngredArr).get()
+                let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
+
+                let checker = (arr, target) => target.every(v => arr.includes(v))
+
+                if(checker(parsedIngredArr, mainDish[i]) === true) {
+                    if (i === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
+                        resultingDishes.push('Oatmeal with fruits')
+                    } else {
+                        resultingDishes.push(i)
+                    }
+                    $('#resultText').text(resultingDishes.sort().join(', '))
+                } else {
+                    differenceArrLen.push(difference.length)
+
+                    function corelate() {
+                        setTimeout(() => {
+
+
+                            if (difference.length === Math.min(...differenceArrLen)) {
+                                const megaDifference = difference.concat(parsedIngredArr);
+                                // console.log(megaDifference.sort().toString())
+                                // console.log(mainDish[i].sort().toString())
+                                if(checker(megaDifference, mainDish[i]) && megaDifference.length === mainDish[i].length) {
+                                    missingIngredients.push(difference)
+                                    $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
+                                }
+                            }
+                        }, 100);
+                    } corelate()
+                }
+
+                // console.log(checker(parsedIngredArr, mainDish[i]),)
+
             }
-
-            let check = parsedIngredArr.every((el) => {
-                return obj[el] !== undefined; //because 0 is falsy
-            });
-
-            console.log(check)
 
             // for(let i in mainDish) {
             //     let difference = $(mainDish[i]).not(parsedIngredArr).get()
@@ -130,8 +153,7 @@ $('.btn').click( () => {
                     // }
                 // }
         // }
-
-
+        //     console.log(Math.min(...mata))
 
         }; displayResults()
 
