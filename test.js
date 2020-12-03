@@ -92,69 +92,23 @@ $('.btn').click( () => {
                     function corelate() {
                         setTimeout(() => {
 
-
                             if (difference.length === Math.min(...differenceArrLen)) {
                                 const megaDifference = difference.concat(parsedIngredArr);
-                                // console.log(megaDifference.sort().toString())
-                                // console.log(mainDish[i].sort().toString())
+
                                 if(checker(megaDifference, mainDish[i]) && megaDifference.length === mainDish[i].length) {
                                     missingIngredients.push(difference)
-                                    $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
+                                    if ($(resultingDishes).length === 0) {
+                                        $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
+                                    }
+                                        // } else {
+                                    //     $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
+                                    // }
                                 }
                             }
                         }, 100);
                     } corelate()
                 }
-
-                // console.log(checker(parsedIngredArr, mainDish[i]),)
-
             }
-
-            // for(let i in mainDish) {
-            //     let difference = $(mainDish[i]).not(parsedIngredArr).get()
-            //     let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
-            //
-            //     for (let j = 0; j < mainDish[i].length; j++) {
-            //         if(mainDish[i][j] === parsedIngredArr[j]) {
-            //             console.log(mainDish[i][j])
-            //         }
-            //     }
-
-
-
-
-                // if(mainDish[i].includes(...parsedIngredArr)) {
-                //     // let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
-                //     if (i === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
-                //         resultingDishes.push('Oatmeal with fruits')
-                //     } else {
-                //         resultingDishes.push(i)
-                //     }
-                //     $('#resultText').text(resultingDishes.sort().join(', '))
-                // for (let j in parsedIngredArr) {
-
-                    // if (mainDish[i].find(el => el === parsedIngredArr[j])) {
-                    //     if(mainDish[i].includes(...parsedIngredArr)) {
-                    //
-                    //         // let dishResult = Object.keys(mainDish).find(key => mainDish[key] === mainDish[i])
-                    //         if (i === 'Oatmeal' && parsedIngredArr.includes(...breakfast.fruit)) {
-                    //             resultingDishes.push('Oatmeal with fruits')
-                    //         } else {
-                    //             resultingDishes.push(i)
-                    //         }
-                    //         console.log(resultingDishes);
-                    //         $('#resultText').text(resultingDishes.sort().join(', '))
-                        // }
-                            // else if(mainDish[i].includes(...parsedIngredArr) && parsedIngredArr.length > mainDish[i].length){
-                        //     console.log(difference)
-                        //     missingIngredients.push(difference)
-                        //     $('#resultText').text('You will need a couple more ingredients to create an awesome breakfast: ' + missingIngredients.sort().join(', '))
-                        // }
-                    // }
-                // }
-        // }
-        //     console.log(Math.min(...mata))
-
         }; displayResults()
 
 })
